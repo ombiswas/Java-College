@@ -75,11 +75,14 @@ public class Q35 {
 
         // Case 4: Setting thread priorities
         PriorityThread t3 = new PriorityThread();
-        t3.setPriority(Thread.MIN_PRIORITY);  // Lowest priority (1)
+        t3.setName("PriorityThread-1");
+        t3.setPriority(Thread.MAX_PRIORITY);  // Lowest priority (1)
         PriorityThread t4 = new PriorityThread();
+        t4.setName("PriorityThread-2");
         t4.setPriority(Thread.NORM_PRIORITY); // Default priority (5)
         PriorityThread t5 = new PriorityThread();
-        t5.setPriority(Thread.MAX_PRIORITY);  // Highest priority (10)
+        t5.setName("PriorityThread-3");
+        t5.setPriority(Thread.MIN_PRIORITY);  // Highest priority (10)
 
         t3.start();
         t4.start();

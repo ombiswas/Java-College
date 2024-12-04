@@ -1,47 +1,37 @@
-class BankAccount {
-    private int balance = 1000; // Initial balance
+class myTh1 extends Thread {
+    int count = 0;
 
-    // Synchronized method to withdraw money
-    public synchronized void withdraw(int amount) {
-        if (balance >= amount) {
-            System.out.println(Thread.currentThread().getName() + " is withdrawing " + amount);
-            balance -= amount;
-            System.out.println(Thread.currentThread().getName() + " completed the withdrawal. Balance: " + balance);
-        } else {
-            System.out.println(Thread.currentThread().getName() + " insufficient funds for withdrawal.");
+    @Override
+    public synchronized void run() {
+        for(int i = 0;i<=5;i++) {
+            count++;
+            System.out.println("Increment: "+count);
         }
     }
-
-    public int getBalance() {
-        return balance;
-    }
 }
+class myTh2 extends Thread {
+    myTh1 sharedTh;
 
-class Customer extends Thread {
-    BankAccount account;
-    int amount;
-
-    public Customer(BankAccount account, int amount) {
-        this.account = account;
-        this.amount = amount;
+    myTh2(myTh1 sharedTh) {
+        this.sharedTh = sharedTh;
     }
 
     @Override
-    public void run() {
-        account.withdraw(amount);
+    public synchronized void run() {
+        synchronized(sharedTh){
+            for(int i = 0;i<=5;i++) {
+                sharedTh.count--;
+                System.out.println("Decrement: "+ sharedTh.count);
+            }
+        }
     }
 }
-
 public class Q33 {
     public static void main(String[] args) {
-        BankAccount account = new BankAccount();
-        
-        // Creating multiple customer threads with withdrawal requests
-        Customer customer1 = new Customer(account, 500);
-        Customer customer2 = new Customer(account, 700);
+        myTh1 th1 = new myTh1();
+        myTh2 th2 = new myTh2(th1);
 
-        // Starting threads
-        customer1.start();
-        customer2.start();
+        th1.start();
+        th2.start();
     }
 }
