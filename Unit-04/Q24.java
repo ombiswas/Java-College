@@ -1,19 +1,16 @@
-import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
-public class Q22 {
+public class Q24 {
     public static void main(String[] args) {
-        String filePath = "example.txt"; // Specify the file path here
+        String filePath = "example.txt"; // Specify your file path here
 
-        try (FileReader fr = new FileReader(filePath);
-             BufferedReader br = new BufferedReader(fr)) {
-
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
             }
-
         } catch (IOException e) {
             System.out.println("An error occurred while reading the file: " + e.getMessage());
         }
