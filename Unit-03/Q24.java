@@ -4,12 +4,6 @@ class MyRunnable implements Runnable {
     public void run() {
         for (int i = 1; i <= 3; i++) {
             System.out.println(Thread.currentThread().getName() + " is running: " + i);
-            try {
-                // Making the thread sleep for 300 milliseconds
-                Thread.sleep(300);
-            } catch (InterruptedException e) {
-                System.out.println(Thread.currentThread().getName() + " interrupted.");
-            }
         }
     }
 }
