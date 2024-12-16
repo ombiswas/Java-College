@@ -7,11 +7,6 @@ class MyThread extends Thread {
     public void run() {
         for (int i = 0; i < 2; i++) {
             System.out.println(Thread.currentThread().getName() + " - Priority: " + Thread.currentThread().getPriority() + " - Count: " + i);
-            try {
-                Thread.sleep(500);  // Simulating some work with a sleep
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

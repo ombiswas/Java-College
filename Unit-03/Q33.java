@@ -3,9 +3,9 @@ class myTh1 extends Thread {
 
     @Override
     public synchronized void run() {
-        for(int i = 0;i<=5;i++) {
+        for(int i = 1; i<=3; i++) {
             count++;
-            System.out.println("Increment: "+count);
+            System.out.println("Increment: " + count);
         }
     }
 }
@@ -19,7 +19,7 @@ class myTh2 extends Thread {
     @Override
     public synchronized void run() {
         synchronized(sharedTh){
-            for(int i = 0;i<=5;i++) {
+            for(int i = 1; i<3; i++) {
                 sharedTh.count--;
                 System.out.println("Decrement: "+ sharedTh.count);
             }
