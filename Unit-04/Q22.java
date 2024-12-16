@@ -1,21 +1,17 @@
+// Write a program in Java to read data from a text file using FileReader.
 import java.io.FileReader;
-import java.io.BufferedReader;
 import java.io.IOException;
 
 public class Q22 {
     public static void main(String[] args) {
-        String filePath = "example.txt"; // Specify the file path here
-
-        try (FileReader fr = new FileReader(filePath);
-             BufferedReader br = new BufferedReader(fr)) {
-
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
+        try (FileReader fr = new FileReader("example.txt")) {
+            int character;
+            while ((character = fr.read()) != -1) {
+                System.out.print((char) character);
             }
-
+            fr.close();
         } catch (IOException e) {
-            System.out.println("An error occurred while reading the file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

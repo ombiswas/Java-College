@@ -1,3 +1,4 @@
+//  Write a program in Java to write data to a text file using FileWriter.
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -10,7 +11,7 @@ public class Q23 {
             fw.write(data);
             System.out.println("Data has been written to the file successfully.");
         } catch (IOException e) {
-            System.out.println("An error occurred while writing to the file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

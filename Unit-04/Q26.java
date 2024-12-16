@@ -1,3 +1,4 @@
+// Write a Java program to implement ArrayList and demonstrate adding, removing, addAll elements.
 import java.util.ArrayList;
 
 public class Q26 {
