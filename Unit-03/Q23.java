@@ -8,14 +8,8 @@ class MyThread extends Thread {
     // Overriding the run() method to define the thread's task
     @Override
     public void run() {
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= 2; i++) {
             System.out.println(getName() + " is running: " + i);
-            try {
-                // Making the thread sleep for 500 milliseconds
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                System.out.println(getName() + " was interrupted.");
-            }
         }
     }
 }
